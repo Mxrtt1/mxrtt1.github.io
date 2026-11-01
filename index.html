@@ -1,10 +1,117 @@
-<!-- Arka plan ses dosyası -->
-<audio id="bg-music" loop>
-    <source src="nesetertas.mp3" type="audio/mpeg">
-    Tarayıcınız ses öğesini desteklemiyor.
-</audio>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mxrtt1 Resmi Web Sitesi</title>
+    <style>
+        /* 1. ARKA PLAN RESMİ AYARI */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* İstediğiniz arka plan resminin linkini alttaki url() içine yapıştırabilirsiniz */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.deviantart.com/curpat/art/Mustafa-Kemal-Ataturk-Banner-805461347') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
 
-<!-- Şık Müzik Çalar Butonu -->
-<div id="music-container">
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+        }
+
+        /* MÜZİK BUTONU TASARIMI */
+        #music-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        #music-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        /* 2. DISCORD LOGOSU VE BUTONU TASARIMI */
+        #discord-floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #5865F2; /* Discord Orijinal Rengi */
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5);
+            transition: all 0.3s ease;
+            z-index: 9999;
+            text-decoration: none;
+        }
+
+        #discord-floating-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 30px rgba(88, 101, 242, 0.8);
+        }
+
+        /* Beyaz Discord SVG Logosu */
+        #discord-floating-btn svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mxrtt1 Hoş Geldiniz</h1>
+
+    <!-- Arka plan ses dosyası -->
+    <audio id="bg-music" loop>
+        <source src="nesetertas.mp3" type="audio/mpeg">
+        Tarayıcınız ses öğesini desteklemiyor.
+    </audio>
+
+    <!-- Müzik Çalar Butonu -->
     <button id="music-btn" onclick="toggleMusic()">🎵 Müziği Başlat</button>
-</div>
+
+    <!-- Yüzen Discord Butonu (Buradaki LINK kısmını kendi sunucu linkinizle değiştirin) -->
+    <a href="https://discord.gg/gangboys" target="_blank" id="discord-floating-btn" title="Discord Sunucumuza Katıl!">
+        <svg viewBox="0 0 127.14 96.36">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.79-.58,1.57-1.19,2.31-1.82a74.37,74.37,0,0,0,73.4,0c.75.63,1.53,1.24,2.32,1.82a68.52,68.52,0,0,1-10.5,5,78.37,78.37,0,0,0,6.63,10.85,105.47,105.47,0,0,0,31.6-18.83C129.87,48.51,123.63,25.7,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+        </svg>
+    </a>
+
+    <script>
+        var music = document.getElementById("bg-music");
+        var btn = document.getElementById("music-btn");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸️ Müziği Durdur";
+                btn.style.backgroundColor = "#2ed573"; /* Çalarken yeşil olur */
+            } else {
+                music.pause();
+                btn.innerHTML = "🎵 Müziği Başlat";
+                btn.style.backgroundColor = "#ff4757"; /* Durunca kırmızı olur */
+            }
+        }
+    </script>
+</body>
+</html>
